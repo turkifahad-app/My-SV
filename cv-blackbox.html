@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="root">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>تركي فهد المطيري | Cybersecurity CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #010b04;
+  --surface: rgba(4,18,10,.88);
+  --border:  rgba(0,255,65,.18);
+  --border2: rgba(0,255,65,.30);
+  --text:    #c6ffd0;
+  --muted:   #527a5f;
+  --g:       #00ff41;
+  --gd:      #00cc33;
+  --c:       #00ffc8;
+  --b:       #00bfff;
+  --w:       #ff6b35;
+  --r: 4px; --rm: 8px; --rl: 14px;
+  --sh:  0 8px 32px rgba(0,255,65,.08);
+  --shd: 0 18px 56px rgba(0,255,65,.14);
+  --ease: 220ms cubic-bezier(.2,.8,.2,1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Tajawal', sans-serif;
+  background: var(--bg); color: var(--text);
+  min-height: 100vh; overflow-x: hidden;
+  cursor: crosshair;
+}
+a { color: inherit; text-decoration: none; }
+@keyframes blink  { 50% { opacity: 0; } }
+@keyframes pulse  { 50% { opacity: .4; transform: scale(1.15); } }
+@keyframes beam   { 0%  { top: -4px; opacity: 0; } 5%,95% { opacity: 1; } 100% { top: 100vh; opacity: 0; } }
+@keyframes scanH  { 50% { opacity: 1; } 0%,100% { opacity: .25; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes glitch {
+  0%,89%,100% { text-shadow: none; transform: none; }
+  90%  { text-shadow: 2px 0 var(--c), -2px 0 var(--w); transform: translateX(2px); }
+  91%  { text-shadow: -2px 0 var(--c), 2px 0 var(--w); transform: translateX(-2px); }
+  92%  { text-shadow: none; transform: none; }
+  93%  { text-shadow: 1px 0 var(--c); transform: skewX(-3deg); }
+  94%  { text-shadow: none; transform: none; }
+}
+@keyframes avring { 50% { transform: scale(1.07); opacity: 1; } 0%,100% { transform: scale(1); opacity: .35; } }
+@keyframes barFill { to { width: 100%; } }
+@keyframes pktIn  { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.07) 2px, rgba(0,0,0,.07) 4px);
+}
+body::after {
+  content: ''; position: fixed; left: 0; right: 0; height: 3px; z-index: 2; pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(0,255,65,.5), transparent);
+  animation: beam 5s linear infinite;
+}
+#mc { position: fixed; inset: 0; z-index: 0; opacity: .17; pointer-events: none; }
+.noise {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+}
+
+/* INTRO */
+#intro {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at 50% 45%, rgba(0,255,65,.06), transparent 28%),
+              linear-gradient(170deg, #010603, #010b04 52%, #010603);
+  overflow: hidden;
+  transition: opacity .85s ease, visibility .85s ease;
+}
+#intro.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+#intro::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.025) 2px, rgba(255,255,255,.025) 4px);
+}
+#intro::after {
+  content: ''; position: absolute; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(0,255,65,.85), transparent);
+  box-shadow: 0 0 20px rgba(0,255,65,.5);
+  animation: beam 2s linear infinite;
+}
+.ibox {
+  position: relative; z-index: 2;
+  width: min(95vw, 880px);
+  padding: 40px 28px 36px;
+  text-align: center;
+  border: 1px solid var(--border2);
+  background: rgba(0,0,0,.25);
+  backdrop-filter: blur(14px);
+}
+.ideco {
+  width: min(300px, 65%); height: 2px; margin: 0 auto 22px;
+  background: linear-gradient(90deg, transparent, var(--g), var(--b), transparent);
+  box-shadow: 0 0 16px rgba(0,255,65,.3);
+  position: relative; overflow: hidden;
+}
+.ideco::after {
+  content: ''; position: absolute; top: 0; right: -30%; width: 30%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.9), transparent);
+  animation: sweepR 1.9s ease-in-out infinite;
+}
+@keyframes sweepR { 0% { right:-30%; opacity:0; } 15% { opacity:1; } 65% { right:105%; opacity:1; } 100% { right:105%; opacity:0; } }
+.ikicker {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px; letter-spacing: .2em; color: var(--muted);
+  margin-bottom: 20px;
+}
+.iname {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(34px, 8.5vw, 84px);
+  font-weight: 700; letter-spacing: .18em;
+  color: var(--g); line-height: 1.1;
+  text-shadow: 0 0 14px rgba(0,255,65,.28), 0 0 32px rgba(0,255,65,.12);
+  direction: ltr; unicode-bidi: plaintext;
+  min-height: 1.15em;
+}
+.iname span {
+  display: inline-block; min-width: .58em;
+  opacity: 0; transform: translateY(-48px) scale(.85); filter: blur(8px);
+  transition: all .32s cubic-bezier(.22,.85,.22,1);
+}
+.iname span.on   { opacity: 1; transform: none; filter: none; }
+.iname span.done { color: var(--text); text-shadow: 0 0 10px rgba(0,255,65,.2), 0 0 20px rgba(0,191,255,.1); }
+#icodec {
+  margin-top: 26px;
+  opacity: 0; transform: translateY(18px) scale(.96);
+  transition: opacity .65s ease, transform .65s cubic-bezier(.22,.85,.22,1);
+}
+#icodec.on { opacity: 1; transform: none; }
+.icgrid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-bottom: 20px;
+}
+.icard {
+  border: 1px solid var(--border2); border-radius: var(--r);
+  padding: 12px 14px; background: rgba(0,0,0,.42);
+  text-align: left; direction: ltr; overflow: hidden;
+}
+.icard-lbl {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9.5px; color: var(--g); letter-spacing: .14em;
+  margin-bottom: 8px;
+}
+.icard-val {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9.5px; line-height: 1.7;
+  color: var(--gd); word-break: break-all; min-height: 32px;
+}
+.ibar {
+  width: min(340px, 80%); margin: 0 auto 11px;
+  height: 5px; border: 1px solid var(--border2);
+  background: rgba(0,255,65,.04); overflow: hidden;
+}
+.ibar-fill {
+  width: 0; height: 100%;
+  background: linear-gradient(90deg, var(--gd), var(--g), var(--b));
+  box-shadow: 0 0 10px rgba(0,255,65,.4);
+  animation: barFill 4.5s ease forwards;
+}
+.istat {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px; color: var(--muted); letter-spacing: .12em;
+}
+.icur { color: var(--g); animation: blink 1s step-end infinite; }
+
+/* PAGE */
+.page { max-width: 1280px; margin: 0 auto; padding: 20px; position: relative; z-index: 3; }
+
+/* TOPBAR */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 10px;
+  padding: 11px 18px; margin-bottom: 16px;
+  border: 1px solid var(--border2); border-radius: var(--rm);
+  background: var(--surface); backdrop-filter: blur(20px);
+  box-shadow: var(--sh); position: relative; overflow: hidden;
+}
+.topbar::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--g), transparent);
+  animation: scanH 3s ease-in-out infinite;
+}
+.hud {
+  display: flex; align-items: center; gap: 14px;
+  font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--gd);
+  flex-wrap: wrap;
+}
+.hud-dot { display: flex; align-items: center; gap: 7px; color: var(--g); font-weight: 700; }
+.dot-live {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--g); box-shadow: 0 0 0 5px rgba(0,255,65,.15);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+.threat { display: flex; align-items: center; gap: 8px; font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--muted); }
+.ttrack { width: 80px; height: 7px; background: rgba(0,255,65,.07); border: 1px solid var(--border2); border-radius: 2px; overflow: hidden; }
+.tfill  { height: 100%; width: 18%; border-radius: 2px; background: var(--g); box-shadow: 0 0 7px var(--g); transition: width .8s ease, background .8s, box-shadow .8s; }
+.topbtns { display: flex; gap: 8px; }
+.tbtn {
+  border: 1px solid var(--border2); background: transparent; color: var(--g);
+  border-radius: var(--r); padding: 6px 12px; cursor: pointer;
+  font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: .04em;
+  transition: var(--ease);
+}
+.tbtn:hover { background: rgba(0,255,65,.08); box-shadow: 0 0 12px rgba(0,255,65,.18); }
+.tbtn.pdf   { background: rgba(0,255,65,.06); border-color: var(--gd); }
+.tbtn.pdf:hover { background: rgba(0,255,65,.14); }
+
+/* SHELL */
+.shell { display: grid; grid-template-columns: 316px 1fr; gap: 16px; }
+
+/* SIDEBAR */
+.sidebar {
+  border: 1px solid var(--border2); border-radius: var(--rl);
+  background: var(--surface); backdrop-filter: blur(20px);
+  overflow: hidden; position: sticky; top: 20px;
+  height: fit-content; box-shadow: var(--sh);
+}
+
+/* HERO */
+.hero {
+  padding: 24px 20px 18px; border-bottom: 1px solid var(--border2);
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at 0% 0%,   rgba(0,255,65,.07), transparent 52%),
+              radial-gradient(circle at 100% 100%, rgba(0,191,255,.05), transparent 44%);
+}
+
+/* AVATAR WITH PHOTO */
+.av {
+  width: 68px; height: 68px; border-radius: var(--rm);
+  display: grid; place-items: center;
+  font-family: 'Share Tech Mono', monospace; font-size: 19px; font-weight: 700;
+  color: var(--g); background: rgba(0,255,65,.05);
+  border: 1px solid var(--gd); margin-bottom: 12px;
+  position: relative; overflow: hidden;
+  box-shadow: 0 0 18px rgba(0,255,65,.1), inset 0 0 18px rgba(0,255,65,.04);
+}
+.av img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; border-radius: var(--rm);
+  display: block;
+}
+.av-initials {
+  position: relative; z-index: 1;
+}
+.av::before {
+  content: ''; position: absolute; inset: -3px; border-radius: 10px;
+  background: transparent; border: 1px solid rgba(0,255,65,.18);
+  animation: avring 2.5s ease-in-out infinite;
+  z-index: 2; pointer-events: none;
+}
+.avc { position: absolute; width: 9px; height: 9px; border-color: var(--g); border-style: solid; z-index: 3; }
+.avc.tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.avc.tr { top: -1px; right:-1px; border-width: 2px 2px 0 0; }
+.avc.bl { bottom:-1px; left: -1px; border-width: 0 0 2px 2px; }
+.avc.br { bottom:-1px; right:-1px; border-width: 0 2px 2px 0; }
+
+.s-name { font-size: 22px; font-weight: 800; line-height: 1.2; animation: glitch 8s ease-in-out infinite; }
+.s-role { margin-top: 5px; font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--g); letter-spacing: .08em; }
+.s-bio  { margin-top: 10px; color: var(--muted); font-size: 13px; line-height: 1.85; }
+
+/* SIDEBAR SECTION */
+.sec { padding: 13px 20px; border-bottom: 1px solid var(--border); }
+.sec:last-child { border-bottom: 0; }
+.sec-t {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+  font-family: 'Share Tech Mono', monospace; font-size: 11px;
+  letter-spacing: .1em; color: var(--g);
+}
+.sec-t::after { content: ''; flex: 1; height: 1px; background: var(--border2); }
+
+/* PACKET STREAM */
+.pstream {
+  height: 98px; overflow: hidden; border: 1px solid var(--border);
+  border-radius: var(--r); background: rgba(0,0,0,.44);
+  margin-bottom: 8px; display: flex; flex-direction: column-reverse;
+  padding: 5px 8px; gap: 2px;
+}
+.prow {
+  font-family: 'Share Tech Mono', monospace; font-size: 9.5px; line-height: 1.5;
+  color: var(--gd); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  opacity: 0; animation: pktIn .28s ease forwards;
+}
+.prow.blk { color: var(--w); }
+.pstats { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--muted); display: flex; justify-content: space-between; }
+
+/* MINI CARDS */
+.mgrid { display: grid; gap: 7px; }
+.mcard {
+  border: 1px solid var(--border); border-radius: var(--r);
+  padding: 9px 10px; background: rgba(0,255,65,.02); transition: var(--ease);
+  position: relative; overflow: hidden;
+}
+.mcard::after { content: ''; position: absolute; right:0; top:0; bottom:0; width:2px; background:var(--gd); opacity:0; transition:opacity .2s; }
+.mcard:hover { border-color: var(--border2); background: rgba(0,255,65,.05); }
+.mcard:hover::after { opacity: 1; }
+.mlbl { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--muted); margin-bottom: 3px; }
+.mval { font-weight: 700; font-size: 14px; }
+
+/* CONTACT */
+.cgrid { display: grid; gap: 7px; }
+.citem { border: 1px solid var(--border); border-radius: var(--r); padding: 9px 10px; background: rgba(0,255,65,.02); transition: var(--ease); }
+.citem:hover { border-color: var(--border2); }
+.clbl { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--muted); margin-bottom: 3px; }
+.cval { font-size: 13px; font-weight: 700; word-break: break-all; color: var(--b); }
+.cval a { color: var(--b); }
+.cval a:hover { text-decoration: underline; }
+
+/* SKILL BARS — no percentage numbers */
+.sklist { display: grid; gap: 9px; }
+.skhead { display: flex; justify-content: flex-start; align-items: center; margin-bottom: 4px; }
+.skname { font-family: 'Share Tech Mono', monospace; font-size: 11px; }
+.sktrack { height: 5px; border-radius: 2px; background: rgba(0,255,65,.07); border: 1px solid var(--border); overflow: hidden; }
+.skfill  { height: 100%; width: 0; border-radius: 2px; background: linear-gradient(90deg, var(--gd), var(--g)); box-shadow: 0 0 7px rgba(0,255,65,.4); transition: width 1.5s cubic-bezier(.25,.46,.45,.94); }
+
+/* CERTS */
+.certs { display: grid; gap: 7px; }
+.cert  { border: 1px solid var(--border); border-radius: var(--r); padding: 9px 10px; background: rgba(0,255,65,.02); display: flex; align-items: center; gap: 10px; }
+.cert-ico { width: 28px; height: 28px; border: 1px solid var(--border2); border-radius: var(--r); display: grid; place-items: center; font-size: 13px; flex-shrink: 0; }
+.cert-name { font-family: 'Share Tech Mono', monospace; font-size: 11px; font-weight: 700; }
+.cert-st   { font-size: 10px; color: var(--muted); margin-top: 2px; }
+.cert-st.tgt { color: var(--b); }
+
+/* LANGUAGES */
+.langs { display: grid; gap: 7px; }
+.lang  { display: flex; justify-content: space-between; align-items: center; padding: 7px 10px; border: 1px solid var(--border); border-radius: var(--r); background: rgba(0,255,65,.02); }
+.lang-n { font-family: 'Share Tech Mono', monospace; font-size: 11px; }
+.lang-l { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--g); border: 1px solid var(--border2); padding: 2px 7px; border-radius: 2px; }
+
+/* TAGS */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag  { padding: 5px 9px; border: 1px solid var(--border2); border-radius: 2px; font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--g); background: rgba(0,255,65,.04); transition: var(--ease); }
+.tag:hover { background: rgba(0,255,65,.1); box-shadow: 0 0 8px rgba(0,255,65,.15); }
+
+/* MAIN */
+.main {
+  border: 1px solid var(--border2); border-radius: var(--rl);
+  background: var(--surface); backdrop-filter: blur(20px);
+  overflow: hidden; box-shadow: var(--sh);
+}
+.mhdr {
+  padding: 26px; border-bottom: 1px solid var(--border2);
+  position: relative; overflow: hidden;
+}
+.mhdr::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at 100%  0%, rgba(0,255,65,.07), transparent 44%),
+              radial-gradient(circle at   0% 100%, rgba(0,191,255,.05), transparent 40%);
+}
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 11px; margin-bottom: 14px;
+  border: 1px solid var(--border2); border-radius: 2px;
+  font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--g);
+  background: rgba(0,255,65,.04); position: relative; z-index: 1;
+}
+.cur { display: inline-block; width: 2px; height: 1em; background: var(--g); margin-right: 2px; vertical-align: middle; animation: blink 1s step-end infinite; }
+.headline { font-size: clamp(19px, 2.9vw, 37px); font-weight: 800; line-height: 1.22; max-width: 760px; position: relative; z-index: 1; }
+.hg { color: var(--g); }
+.hb { color: var(--b); }
+.lead { max-width: 740px; color: var(--muted); font-size: 14px; line-height: 1.9; margin-top: 12px; position: relative; z-index: 1; }
+.acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; position: relative; z-index: 1; }
+.btn { display: inline-flex; align-items: center; gap: 7px; padding: 10px 16px; border-radius: var(--r); font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: .04em; transition: var(--ease); cursor: pointer; border: none; text-decoration: none; }
+.btn-p { background: rgba(0,255,65,.09); color: var(--g); border: 1px solid var(--gd); }
+.btn-p:hover { background: rgba(0,255,65,.17); box-shadow: 0 0 18px rgba(0,255,65,.2); }
+.btn-s { background: transparent; color: var(--muted); border: 1px solid var(--border2); }
+.btn-s:hover { color: var(--text); }
+
+.content { padding: 20px; display: grid; gap: 16px; }
+
+/* DASHBOARD */
+.drow { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+.dcard {
+  border: 1px solid var(--border); border-radius: var(--r);
+  padding: 13px; background: rgba(0,255,65,.02);
+  transition: var(--ease); position: relative; overflow: hidden;
+}
+.dcard::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--g),transparent); opacity:0; transition:opacity .3s; }
+.dcard:hover { border-color: var(--border2); }
+.dcard:hover::after { opacity: 1; }
+.dlbl { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--muted); margin-bottom: 5px; letter-spacing: .08em; }
+.dval { font-family: 'Share Tech Mono', monospace; font-size: 23px; font-weight: 700; color: var(--g); line-height: 1; margin-bottom: 3px; }
+.dsub { font-size: 10px; color: var(--muted); }
+
+/* BLOCK */
+.block { border: 1px solid var(--border); border-radius: var(--rm); padding: 18px; background: rgba(0,255,65,.02); transition: var(--ease); }
+.block:hover { border-color: var(--border2); }
+.btit  { font-size: 16px; font-weight: 800; margin-bottom: 9px; }
+.btext { color: var(--muted); line-height: 1.9; font-size: 14px; }
+
+/* FEATURE GRID */
+.fgrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.fcard {
+  border: 1px solid var(--border); border-radius: var(--rm);
+  padding: 15px; background: rgba(0,255,65,.02);
+  transition: var(--ease); position: relative; overflow: hidden;
+}
+.fcard::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--g),transparent); transform:scaleX(0); transition:transform .4s; }
+.fcard:hover { border-color: var(--border2); transform: translateY(-3px); box-shadow: var(--shd); }
+.fcard:hover::before { transform: scaleX(1); }
+.fico { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid var(--border2); border-radius: var(--r); margin-bottom: 10px; font-size: 16px; background: rgba(0,255,65,.04); }
+.fcard h3 { font-size: 14px; font-weight: 800; margin-bottom: 7px; }
+.fcard p  { font-size: 12px; color: var(--muted); line-height: 1.8; }
+
+/* 2-COL */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* EDU / PROJ */
+.ecard, .pcard {
+  border: 1px solid var(--border); border-radius: var(--rm);
+  padding: 15px; background: rgba(0,255,65,.02); transition: var(--ease);
+}
+.ecard:hover, .pcard:hover { border-color: var(--border2); transform: translateY(-2px); box-shadow: var(--shd); }
+.ecard h3, .pcard h3 { font-size: 14px; font-weight: 800; margin-bottom: 7px; }
+.ecard p, .pcard p   { font-size: 12px; color: var(--muted); line-height: 1.8; }
+.kicker { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--g); letter-spacing: .1em; margin-bottom: 5px; }
+.plink { display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--b); border: 1px solid var(--border2); padding: 4px 9px; border-radius: var(--r); transition: var(--ease); }
+.plink:hover { background: rgba(0,191,255,.08); border-color: var(--b); }
+
+/* TERMINAL */
+.term     { border: 1px solid var(--border2); border-radius: var(--rm); overflow: hidden; background: #010705; box-shadow: var(--sh); }
+.term-top { display: flex; align-items: center; gap: 7px; padding: 8px 13px; border-bottom: 1px solid var(--border); background: rgba(0,255,65,.03); }
+.tdot     { width: 10px; height: 10px; border-radius: 50%; }
+.tdot:nth-child(1) { background: #ff5f57; }
+.tdot:nth-child(2) { background: #febc2e; }
+.tdot:nth-child(3) { background: #28c840; }
+.ttitle   { margin-right: auto; font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--muted); }
+.termbody { padding: 13px 16px; font-family: 'Share Tech Mono', monospace; font-size: 12px; line-height: 1.9; color: var(--g); direction: ltr; text-align: left; min-height: 200px; white-space: pre; }
+
+.shdr { font-size: 16px; font-weight: 800; margin-bottom: 12px; }
+
+/* FOOTER */
+.footer { padding: 12px 24px 20px; color: var(--muted); font-family: 'Share Tech Mono', monospace; font-size: 11px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .shell  { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .fgrid, .g2, .drow { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .page   { padding: 10px; }
+  .topbar { padding: 10px 14px; }
+  .shell  { gap: 12px; }
+  .hero   { padding: 18px 14px; }
+  .sec    { padding: 13px 16px; }
+  .mhdr   { padding: 18px 14px; }
+  .content { padding: 14px; gap: 14px; }
+  .footer { padding: 12px 14px 18px; flex-direction: column; }
+  .drow   { grid-template-columns: 1fr 1fr; }
+  .fgrid, .g2 { grid-template-columns: 1fr; }
+  .headline { font-size: 20px; }
+  .lead   { font-size: 14px; }
+  .s-name { font-size: 20px; }
+  .termbody { font-size: 11px; min-height: 140px; }
+  .mlbl, .clbl { font-size: 12px; }
+  .mval { font-size: 15px; }
+  .cval { font-size: 14px; }
+  .skname { font-size: 13px; }
+  .cert-name { font-size: 13px; }
+  .cert-st   { font-size: 12px; }
+  .lang-n { font-size: 13px; }
+  .lang-l { font-size: 12px; }
+  .tag    { font-size: 12px; padding: 6px 10px; }
+  .sec-t  { font-size: 12px; }
+  .icgrid { grid-template-columns: 1fr; }
+  .iname  { letter-spacing: .12em; }
+  .hud > span:nth-child(4),
+  .hud > span:nth-child(5) { display: none; }
+}
+@media (max-width: 480px) {
+  .page  { padding: 8px; }
+  .drow  { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .dcard { padding: 11px 9px; }
+  .dval  { font-size: 20px; }
+  .headline { font-size: 18px; }
+  .iname { font-size: clamp(28px, 10vw, 58px) !important; letter-spacing: .1em !important; }
+  .icard-val { font-size: 8.5px; }
+  body   { cursor: default; }
+}
+
+@media print {
+  #intro, #mc, .noise, body::before, body::after,
+  .topbar, .pstream, .pstats, .term, .drow { display: none !important; }
+  body    { background: #fff !important; color: #000 !important; cursor: default; }
+  .page   { padding: 0; }
+  .shell  { display: grid !important; grid-template-columns: 240px 1fr !important; gap: 10px !important; }
+  .sidebar, .main { border: 1px solid #ccc !important; background: #fff !important; backdrop-filter: none !important; box-shadow: none !important; }
+  .sidebar { position: static !important; }
+  * { color: #000 !important; text-shadow: none !important; box-shadow: none !important; animation: none !important; transition: none !important; }
+  .mcard, .citem, .cert, .lang, .ecard, .pcard, .fcard, .block { border: 1px solid #ddd !important; background: #fafafa !important; }
+  .skfill  { background: #333 !important; }
+  .sktrack { background: #e5e5e5 !important; }
+}
+</style>
+</head>
+<body>
+
+<div id="intro">
+  <div class="ibox">
+    <div class="ideco"></div>
+    <div class="ikicker">INITIALIZING SECURE PROFILE</div>
+    <div class="iname" id="iname"></div>
+    <div id="icodec">
+      <div class="icgrid">
+        <div class="icard">
+          <div class="icard-lbl">BINARY_ENCODE &mdash; لغة الآلة</div>
+          <div class="icard-val" id="ic-bin">…</div>
+        </div>
+        <div class="icard">
+          <div class="icard-lbl">BASE64_ENCODE &mdash; مشفّر</div>
+          <div class="icard-val" id="ic-b64">…</div>
+        </div>
+      </div>
+      <div class="ibar"><div class="ibar-fill"></div></div>
+      <div class="istat">DIGITAL IDENTITY INITIALIZED<span class="icur">_</span></div>
+    </div>
+  </div>
+</div>
+
+<canvas id="mc"></canvas>
+<div class="noise"></div>
+
+<div class="page">
+  <div class="topbar">
+    <div class="hud">
+      <div class="hud-dot"><span class="dot-live"></span>SYS.ONLINE</div>
+      <span style="color:var(--border2)">|</span>
+      <span id="clock"></span>
+      <span style="color:var(--border2)">|</span>
+      <span>IP:192.168.1.<span id="ip">—</span></span>
+    </div>
+    <div class="threat">
+      <span>THREAT:</span>
+      <div class="ttrack"><div class="tfill" id="tfill"></div></div>
+      <span id="tlabel" style="font-family:'Share Tech Mono',monospace;font-size:11px">LOW</span>
+    </div>
+    <div class="topbtns">
+      <button class="tbtn" id="langBtn">[ EN ]</button>
+<button class="tbtn pdf" onclick="downloadCV()">[ ↓ PDF ]</button>
+    </div>
+  </div>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="hero">
+        <!-- AVATAR: shows me.jpg if available, falls back to initials -->
+        <div class="av">
+          <img src="me.jpg" alt="Turki Fahad" onerror="this.style.display='none'">
+          <span class="av-initials">TF</span>
+          <div class="avc tl"></div><div class="avc tr"></div>
+          <div class="avc bl"></div><div class="avc br"></div>
+        </div>
+        <h1 class="s-name"
+          data-ar="تركي فهد المطيري"
+          data-en="TURKI FAHAD ALMUTAIRI">تركي فهد المطيري</h1>
+        <div class="s-role"
+          data-ar="طالب أمن سيبراني // مطور تطبيقات"
+          data-en="CYBERSECURITY STUDENT // APP DEVELOPER">طالب أمن سيبراني // مطور تطبيقات</div>
+        <p class="s-bio"
+          data-ar="طالب أمن سيبراني على مشارف التخرج، لدي معرفة في Linux وWindows وأساسيات الشبكات. أهدف إلى التخصص في الأمن السيبراني وتطوير نظام تشغيل بصناعة سعودية."
+          data-en="Cybersecurity student nearing graduation with experience in Linux, Windows, and networking. Aiming to specialize in cybersecurity and build a Saudi-made OS.">
+          طالب أمن سيبراني على مشارف التخرج، لدي معرفة في Linux وWindows وأساسيات الشبكات. أهدف إلى التخصص في الأمن السيبراني وتطوير نظام تشغيل بصناعة سعودية.
+        </p>
+      </div>
+
+      <div class="sec">
+        <div class="sec-t" data-ar="نشاط الشبكة" data-en="NET_ACTIVITY">نشاط الشبكة</div>
+        <div class="pstream" id="ps"></div>
+        <div class="pstats">
+          <span>PKT:<span id="pktN" style="color:var(--g)">0</span></span>
+          <span>BYTES:<span id="bytN" style="color:var(--g)">0</span></span>
+          <span style="color:var(--g)">ACTIVE</span>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-t" data-ar="معلومات" data-en="INFO">معلومات</div>
+        <div class="mgrid">
+          <div class="mcard">
+            <div class="mlbl" data-ar="التخصص" data-en="SPECIALIZATION">التخصص</div>
+            <div class="mval" data-ar="أمن سيبراني" data-en="Cybersecurity">أمن سيبراني</div>
+          </div>
+          <div class="mcard">
+            <div class="mlbl" data-ar="الصفة" data-en="STATUS">الصفة</div>
+            <div class="mval" data-ar="طالب / مطور" data-en="Student / Developer">طالب / مطور</div>
+          </div>
+          <div class="mcard">
+            <div class="mlbl" data-ar="الموقع" data-en="LOCATION">الموقع</div>
+            <div class="mval" data-ar="القصيم — المذنب" data-en="Al-Qassim, KSA">القصيم — المذنب</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-t" data-ar="التواصل" data-en="CONTACT">التواصل</div>
+        <div class="cgrid">
+          <div class="citem">
+            <div class="clbl">EMAIL</div>
+            <div class="cval"><a href="mailto:TURKI@FAHADs.SA">TURKI@FAHADs.SA</a></div>
+          </div>
+          <div class="citem">
+            <div class="clbl">LINKEDIN</div>
+            <div class="cval"><a href="https://www.linkedin.com/in/turki-fahads/" target="_blank">turki-fahads ↗</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKILLS — no percentage numbers shown -->
+      <div class="sec">
+        <div class="sec-t" data-ar="المهارات" data-en="SKILLS">المهارات</div>
+        <div class="sklist">
+          <div class="skrow"><div class="skhead"><span class="skname">Computer Networks</span></div><div class="sktrack"><div class="skfill" data-p="90"></div></div></div>
+          <div class="skrow"><div class="skhead"><span class="skname">Cloud Computing</span></div><div class="sktrack"><div class="skfill" data-p="80"></div></div></div>
+          <div class="skrow"><div class="skhead"><span class="skname">App Development</span></div><div class="sktrack"><div class="skfill" data-p="80"></div></div></div>
+          <div class="skrow"><div class="skhead"><span class="skname">Linux (Kali)</span></div><div class="sktrack"><div class="skfill" data-p="70"></div></div></div>
+          <div class="skrow"><div class="skhead"><span class="skname">Web Security</span></div><div class="sktrack"><div class="skfill" data-p="55"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-t" data-ar="الشهادات" data-en="CERTIFICATIONS">الشهادات</div>
+        <div class="certs">
+          <div class="cert"><div class="cert-ico">🎓</div><div><div class="cert-name" data-ar="دبلوم تقنية المعلومات" data-en="IT Diploma">دبلوم تقنية المعلومات</div><div class="cert-st" data-ar="✓ حاصل عليها" data-en="✓ Obtained">✓ حاصل عليها</div></div></div>
+          <div class="cert"><div class="cert-ico">🎯</div><div><div class="cert-name">CCNA</div><div class="cert-st tgt" data-ar="⟳ مستهدفة" data-en="⟳ Targeted">⟳ مستهدفة</div></div></div>
+          <div class="cert"><div class="cert-ico">🎯</div><div><div class="cert-name">CompTIA Security+</div><div class="cert-st tgt" data-ar="⟳ مستهدفة" data-en="⟳ Targeted">⟳ مستهدفة</div></div></div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-t" data-ar="اللغات" data-en="LANGUAGES">اللغات</div>
+        <div class="langs">
+          <div class="lang"><span class="lang-n" data-ar="العربية" data-en="Arabic">العربية</span><span class="lang-l" data-ar="ممتاز" data-en="Native">ممتاز</span></div>
+          <div class="lang"><span class="lang-n" data-ar="الإنجليزية" data-en="English">الإنجليزية</span><span class="lang-l" data-ar="جيد" data-en="Good">جيد</span></div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-t" data-ar="الاهتمامات" data-en="TAGS">الاهتمامات</div>
+        <div class="tags">
+          <span class="tag">Cybersecurity</span><span class="tag">Networking</span>
+          <span class="tag">Linux</span><span class="tag">Cloud</span>
+          <span class="tag">App Dev</span><span class="tag">Web Security</span>
+          <span class="tag">Problem Solving</span><span class="tag">AI Automation</span>
+          <span class="tag">System Analysis</span><span class="tag">Digital Identity</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="mhdr">
+        <div class="eyebrow">▶ access_profile("turki_fahad_almutairi")<span class="cur"></span></div>
+        <h2 class="headline" id="hl"
+          data-ar='سيرة ذاتية تعبّر عن شغفي بالتقنية<br>وسعيي المستمر لبناء مستقبلي في <span class="hg">الأمن السيبراني</span>'
+          data-en='A CV reflecting my passion for technology<br>and my pursuit of a future in <span class="hg">cybersecurity</span>'>
+          سيرة ذاتية تعبّر عن شغفي بالتقنية<br>وسعيي المستمر لبناء مستقبلي في <span class="hg">الأمن السيبراني</span>.
+        </h2>
+        <div class="acts">
+          <a class="btn btn-p" href="#projects" data-ar="▶ المشاريع" data-en="▶ Projects">▶ المشاريع</a>
+          <a class="btn btn-s" href="#edu"       data-ar="↓ التعليم"  data-en="↓ Education">↓ التعليم</a>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="drow">
+          <div class="dcard">
+            <div class="dlbl">UPTIME</div>
+            <div class="dval" id="uptime">00:00</div>
+            <div class="dsub">since load</div>
+          </div>
+          <div class="dcard">
+            <div class="dlbl" data-ar="الاهتمام" data-en="INTEREST">الاهتمام</div>
+            <div class="dval" style="color:var(--c)">HIGH</div>
+            <div class="dsub" data-ar="أمن سيبراني" data-en="cybersecurity">أمن سيبراني</div>
+          </div>
+          <div class="dcard">
+            <div class="dlbl">PROFILE_OK</div>
+            <div class="dval">100<span style="font-size:14px">%</span></div>
+            <div class="dsub">verified clean</div>
+          </div>
+          <div class="dcard">
+            <div class="dlbl">POSTURE</div>
+            <div class="dval" style="font-size:16px">DEFENDER</div>
+            <div class="dsub">mode: protection</div>
+          </div>
+        </div>
+
+        <section class="block">
+          <h2 class="btit" data-ar="نبذة احترافية" data-en="Summary">نبذة احترافية</h2>
+          <p class="btext"
+            data-ar="أنا تركي فهد المطيري، طالب أمن سيبراني على مشارف التخرج من كليات بريدة. لدي معرفة في Linux (Kali) وWindows وأساسيات الشبكات. أحب بناء مشاريع عملية وأستفيد من وكلاء الذكاء الاصطناعي لتسريع تطوير الحلول التقنية. هدفي الوصول إلى بناء نظام تشغيل خاص بصناعة سعودية."
+            data-en="I'm Turki Fahad Almutairi, a cybersecurity student nearing graduation from Buraydah Colleges. I have experience with Linux (Kali), Windows, and networking. I enjoy building practical projects and leverage AI agents to accelerate technical solutions. My goal is to build a Saudi-made OS.">
+            أنا تركي فهد المطيري، طالب أمن سيبراني على مشارف التخرج من كليات بريدة. لدي معرفة في Linux (Kali) وWindows وأساسيات الشبكات. أحب بناء مشاريع عملية وأستفيد من وكلاء الذكاء الاصطناعي لتسريع تطوير الحلول التقنية. هدفي الوصول إلى بناء نظام تشغيل خاص بصناعة سعودية.
+          </p>
+          <div class="tags" style="margin-top:12px">
+            <span class="tag">Cybersecurity Student</span>
+            <span class="tag">Linux (Kali)</span>
+            <span class="tag">Cloud Computing</span>
+            <span class="tag">App Developer</span>
+          </div>
+        </section>
+
+        <section class="fgrid">
+          <article class="fcard">
+            <div class="fico">🛡️</div>
+            <h3 data-ar="توجه سيبراني واضح" data-en="Clear Cybersecurity Focus">توجه سيبراني واضح</h3>
+            <p data-ar="أعمل على بناء نفسي في مجال الأمن السيبراني من خلال التعلم المستمر وفهم أساسيات الحماية والأنظمة."
+               data-en="I am building myself in cybersecurity through continuous learning and a strong understanding of security fundamentals and systems.">
+               أعمل على بناء نفسي في مجال الأمن السيبراني من خلال التعلم المستمر وفهم أساسيات الحماية والأنظمة.
+            </p>
+          </article>
+          <article class="fcard">
+            <div class="fico">🧠</div>
+            <h3 data-ar="شغف بالتعلم والتطوير" data-en="Passion for Learning & Growth">شغف بالتعلم والتطوير</h3>
+            <p data-ar="أحب استكشاف الأدوات والتقنيات الجديدة، وأستفيد منها في تطوير مهاراتي وبناء خبرة عملية حقيقية."
+               data-en="I enjoy exploring new tools and technologies, using them to develop my skills and gain real practical experience.">
+               أحب استكشاف الأدوات والتقنيات الجديدة، وأستفيد منها في تطوير مهاراتي وبناء خبرة عملية حقيقية.
+            </p>
+          </article>
+          <article class="fcard">
+            <div class="fico">💻</div>
+            <h3 data-ar="خبرة تجمع بين الأمن والتطوير" data-en="Security + Development Experience">خبرة تجمع بين الأمن والتطوير</h3>
+            <p data-ar="أجمع بين اهتمامي بالأمن السيبراني وتطوير التطبيقات لبناء مشاريع تقنية حديثة وذات قيمة عملية."
+               data-en="I combine cybersecurity with app development to build modern and practical tech solutions.">
+               أجمع بين اهتمامي بالأمن السيبراني وتطوير التطبيقات لبناء مشاريع تقنية حديثة وذات قيمة عملية.
+            </p>
+          </article>
+        </section>
+
+        <section id="edu">
+          <h2 class="shdr" data-ar="التعليم" data-en="Education">التعليم</h2>
+          <div class="ecard">
+            <div class="kicker">2023 → 2026</div>
+            <h3 data-ar="كليات بريدة" data-en="Buraydah Colleges">كليات بريدة</h3>
+            <p data-ar="بكالوريوس أمن سيبراني — على مشارف التخرج بإذن الله | القصيم، المملكة العربية السعودية" data-en="Bachelor's in Cybersecurity — Graduating soon | Al-Qassim, Saudi Arabia">بكالوريوس أمن سيبراني — على مشارف التخرج بإذن الله | القصيم، المملكة العربية السعودية</p>
+          </div>
+        </section>
+
+        <!-- TERMINAL — no percentage numbers -->
+        <section class="term">
+          <div class="term-top">
+            <span class="tdot"></span><span class="tdot"></span><span class="tdot"></span>
+            <span class="ttitle">turki@sec-lab: ~</span>
+          </div>
+          <div class="termbody" id="term"></div>
+        </section>
+
+        <section id="projects">
+          <h2 class="shdr" data-ar="المشاريع" data-en="Projects">المشاريع</h2>
+          <div class="g2">
+            <article class="pcard">
+              <div class="kicker">App Store — iOS</div>
+              <h3>طقة | TAKAH</h3>
+              <p data-ar="تطبيق متخصص في لعبة البلوت — يحسب ويسجل ويحلل نتائج اللعبة بطريقة حديثة. متاح على App Store." data-en="A specialized Baloot card game app — modern scoring, recording, and analysis. Available on the App Store.">تطبيق متخصص في لعبة البلوت — يحسب ويسجل ويحلل نتائج اللعبة بطريقة حديثة. متاح على App Store.</p>
+              <a class="plink" href="https://apps.apple.com/sa/app/%D8%B7%D9%82%D8%A9-takah/id6759226764?l=ar" target="_blank">↗ App Store</a>
+            </article>
+            <article class="pcard">
+              <div class="kicker" data-ar="تجاري" data-en="Commercial">تجاري</div>
+              <h3 data-ar="مشاريع تجارية للمنشآت" data-en="Business Projects">مشاريع تجارية للمنشآت</h3>
+              <p data-ar="مشاريع تقنية نُفِّذت لمنشآت متعددة. التفاصيل متاحة عند التواصل المباشر." data-en="Technical projects delivered for various organizations. Details available upon direct contact.">مشاريع تقنية نُفِّذت لمنشآت متعددة. التفاصيل متاحة عند التواصل المباشر.</p>
+              <a class="plink" href="mailto:TURKI@FAHADs.SA" data-ar="✉ تواصل معي" data-en="✉ Contact Me">✉ تواصل معي</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2 class="btit" data-ar="الهدف المهني" data-en="Career Goal">الهدف المهني</h2>
+          <p class="btext"
+            data-ar="التخصص في الأمن السيبراني وفهم الأنظمة بعمق، وبناء نظام تشغيل خاص بصناعة سعودية، مع الاستفادة من وكلاء الذكاء الاصطناعي لتسريع بناء الحلول التقنية."
+            data-en="Specialize in cybersecurity and deeply understand operating systems, build a Saudi-made OS, and leverage AI agents to accelerate the development of technical solutions.">
+            التخصص في الأمن السيبراني وفهم الأنظمة بعمق، وبناء نظام تشغيل خاص بصناعة سعودية، مع الاستفادة من وكلاء الذكاء الاصطناعي لتسريع بناء الحلول التقنية.
+          </p>
+        </section>
+      </div>
+
+      <div class="footer">
+        <span>© 2026 TURKI.FAHAD.ALMUTAIRI</span>
+        <span style="color:var(--g)">[ SECURE_PROFILE_v4.0 ]</span>
+        <span id="sess">SESSION: 00:00</span>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+/* MATRIX RAIN */
+const mc=document.getElementById('mc'),ctx=mc.getContext('2d');
+function rsz(){mc.width=innerWidth;mc.height=innerHeight;}
+rsz();
+let FS=14,cols=Math.floor(mc.width/FS),drops=Array(cols).fill(1);
+function mx(){
+  ctx.fillStyle='rgba(1,11,4,.05)';ctx.fillRect(0,0,mc.width,mc.height);
+  ctx.font=`${FS}px "Share Tech Mono",monospace`;
+  for(let i=0;i<drops.length;i++){
+    const r=Math.random();
+    ctx.fillStyle=r>.98?'#fff':r>.9?'#00ff41':'#007a20';
+    ctx.fillText(r>.5?'1':'0',i*FS,drops[i]*FS);
+    if(drops[i]*FS>mc.height&&Math.random()>.975)drops[i]=0;
+    drops[i]++;
+  }
+}
+setInterval(mx,45);
+window.addEventListener('resize',()=>{rsz();cols=Math.floor(mc.width/FS);drops=Array(cols).fill(1);});
+
+/* CODEC */
+const N='تركي فهد المطيري';
+function toBin(s){return[...new TextEncoder().encode(s)].map(b=>b.toString(2).padStart(8,'0')).join(' ');}
+function toB64(s){const b=new TextEncoder().encode(s);let x='';b.forEach(v=>x+=String.fromCharCode(v));return btoa(x);}
+document.getElementById('ic-bin').textContent=toBin(N);
+document.getElementById('ic-b64').textContent=toB64(N);
+
+/* INTRO SCRAMBLE */
+const SC='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%@!?*&';
+const inameEl=document.getElementById('iname');
+const icodecEl=document.getElementById('icodec');
+const introEl=document.getElementById('intro');
+function scrambleName(text,onDone){
+  inameEl.innerHTML='';
+  let done=0;
+  const chars=[...text].filter(c=>c!==' ');
+  [...text].forEach((ch,i)=>{
+    const sp=document.createElement('span');
+    if(ch===' '){sp.innerHTML='&nbsp;';sp.style.cssText='opacity:1;transform:none;filter:none;min-width:.46em';inameEl.appendChild(sp);return;}
+    sp.textContent=SC[Math.floor(Math.random()*SC.length)];
+    inameEl.appendChild(sp);
+    setTimeout(()=>{
+      sp.classList.add('on');
+      let c=0,max=7+Math.floor(Math.random()*7);
+      const iv=setInterval(()=>{
+        if(c>=max){clearInterval(iv);sp.textContent=ch;sp.classList.add('done');if(++done===chars.length&&onDone)onDone();return;}
+        sp.textContent=SC[Math.floor(Math.random()*SC.length)];c++;
+      },28);
+    },95*i);
+  });
+}
+scrambleName('TURKI FAHAD',()=>{
+  setTimeout(()=>icodecEl.classList.add('on'),280);
+  setTimeout(()=>introEl.classList.add('gone'),4800);
+});
+
+/* CLOCK + IP */
+function clk(){const n=new Date();document.getElementById('clock').textContent=[n.getHours(),n.getMinutes(),n.getSeconds()].map(v=>String(v).padStart(2,'0')).join(':');}
+setInterval(clk,1000);clk();
+document.getElementById('ip').textContent=Math.floor(Math.random()*253+2);
+
+/* THREAT */
+const tf=document.getElementById('tfill'),tl=document.getElementById('tlabel');
+const TL=[
+  {p:12,l:'MINIMAL',c:'#00ff41'},{p:24,l:'LOW',c:'#00ff41'},
+  {p:50,l:'MODERATE',c:'#ffcc00'},{p:76,l:'ELEVATED',c:'#ff6b35'},
+];
+function threat(){const t=TL[Math.floor(Math.random()*TL.length)];tf.style.width=t.p+'%';tf.style.background=t.c;tf.style.boxShadow=`0 0 8px ${t.c}`;tl.textContent=t.l;tl.style.color=t.c;}
+threat();setInterval(threat,4000);
+
+/* UPTIME */
+const t0=Date.now();
+function up(){const e=Math.floor((Date.now()-t0)/1e3);const s=`${String(Math.floor(e/60)).padStart(2,'0')}:${String(e%60).padStart(2,'0')}`;document.getElementById('uptime').textContent=s;document.getElementById('sess').textContent='SESSION: '+s;}
+setInterval(up,1000);
+
+/* PACKETS */
+const psEl=document.getElementById('ps');
+let pN=0,bN=0;
+const IPS=['192.168.1.4','10.0.0.23','172.16.0.8','8.8.8.8','185.220.101.45','45.33.32.156','203.0.113.77'];
+const PR=['TCP','UDP','HTTPS','SSH','DNS','TLS'];
+const PT=[443,22,80,53,8080,3389,21];
+function pkt(){
+  const ip=IPS[Math.floor(Math.random()*IPS.length)];
+  const pr=PR[Math.floor(Math.random()*PR.length)];
+  const pt=PT[Math.floor(Math.random()*PT.length)];
+  const by=Math.floor(Math.random()*900+64);
+  const bl=Math.random()>.82;
+  const row=document.createElement('div');
+  row.className='prow'+(bl?' blk':'');
+  row.textContent=bl?`[${pr}:${pt}] ${ip} → BLOCKED ✗`:`[${pr}:${pt}] ${ip} → ALLOWED ${by}B`;
+  psEl.prepend(row);
+  if(psEl.children.length>7)psEl.lastChild.remove();
+  pN++;bN+=by;
+  document.getElementById('pktN').textContent=pN;
+  document.getElementById('bytN').textContent=bN>1024?(bN/1024).toFixed(1)+'K':bN;
+}
+setInterval(pkt,1400);
+
+/* SKILL BARS */
+setTimeout(()=>document.querySelectorAll('.skfill').forEach(el=>{el.style.width=el.dataset.p+'%';}),700);
+
+/* TERMINAL — no percentages */
+const termEl=document.getElementById('term');
+const TS=[
+  {t:'cmd',x:'$ whoami --clearance L3'},
+  {t:'out',x:'  USER   : turki_fahad_almutairi',c:'var(--b)'},
+  {t:'out',x:'  ROLE   : Cybersecurity Student', c:'var(--b)'},
+  {t:'out',x:'  LOC    : Al-Qassim, Saudi Arabia',c:'var(--b)'},
+  {t:'br', x:''},
+  {t:'cmd',x:'$ cat skills.cfg'},
+  {t:'out',x:'  [✓] Computer Networks',c:'var(--g)'},
+  {t:'out',x:'  [✓] Cloud Computing',c:'var(--g)'},
+  {t:'out',x:'  [✓] App Development',c:'var(--g)'},
+  {t:'out',x:'  [✓] Linux (Kali)',c:'var(--g)'},
+  {t:'out',x:'  [✓] Web Security',c:'var(--g)'},
+  {t:'br', x:''},
+  {t:'cmd',x:'$ ./init_defense.sh'},
+  {t:'out',x:'  [SUCCESS] Environment initialized.',  c:'var(--c)'},
+  {t:'out',x:'  [SUCCESS] SHA256 fingerprint verified.',c:'var(--c)'},
+  {t:'out',x:'  [SUCCESS] Monitoring ACTIVE...',       c:'var(--c)'},
+  {t:'br', x:''},
+  {t:'cmd',x:'$ _'},
+];
+let si=0,ci=0;
+function type(){
+  if(si>=TS.length)return;
+  const s=TS[si];
+  if(s.t==='br'){termEl.appendChild(document.createTextNode('\n'));si++;ci=0;setTimeout(type,80);return;}
+  if(ci===0){const sp=document.createElement('span');sp.id='t'+si;sp.style.color=s.t==='cmd'?'var(--g)':(s.c||'var(--muted)');termEl.appendChild(sp);}
+  document.getElementById('t'+si).textContent+=s.x[ci];ci++;
+  if(ci<s.x.length){setTimeout(type,s.t==='cmd'?20:9);}
+  else{termEl.appendChild(document.createTextNode('\n'));si++;ci=0;setTimeout(type,s.t==='cmd'?300:55);}
+}
+type();
+
+/* LANG TOGGLE */
+let isAR=true;
+const rootEl=document.getElementById('root');
+const langBtn=document.getElementById('langBtn');
+function applyLang(ar){
+  isAR=ar;
+  rootEl.setAttribute('lang',ar?'ar':'en');
+  rootEl.setAttribute('dir',ar?'rtl':'ltr');
+  langBtn.textContent=ar?'[ EN ]':'[ AR ]';
+  document.querySelectorAll('[data-ar]').forEach(el=>{
+    const v=ar?el.dataset.ar:el.dataset.en;
+    if(!v)return;
+    if(el.id==='hl'||el.tagName==='P')el.innerHTML=v;
+    else el.textContent=v;
+  });
+}
+langBtn.addEventListener('click',()=>applyLang(!isAR));
+
+/* PDF */
+document.getElementById('pdfBtn').addEventListener('click',()=>window.print());
+function downloadCV() {
+  window.open('cv.pdf', '_blank');
+}
+</script>
+</body>
+</html>
