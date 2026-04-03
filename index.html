@@ -249,7 +249,47 @@ body::after {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; border-radius: var(--rm);
   display: block;
+  cursor: zoom-in;
 }
+
+/* IMAGE VIEWER */
+.img-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0,0,0,.78);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .22s ease, visibility .22s ease;
+}
+.img-lightbox.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.img-lightbox img {
+  width: auto;
+  height: auto;
+  max-width: min(92vw, 900px);
+  max-height: 88vh;
+  border-radius: 14px;
+  border: 1px solid var(--border2);
+  box-shadow: 0 24px 60px rgba(0,0,0,.45), 0 0 24px rgba(0,255,65,.12);
+  object-fit: contain;
+  cursor: default;
+  transform: scale(.94);
+  transition: transform .22s ease;
+}
+.img-lightbox.show img {
+  transform: scale(1);
+}
+
 .av-initials {
   position: relative; z-index: 1;
 }
@@ -531,6 +571,10 @@ body::after {
 <canvas id="mc"></canvas>
 <div class="noise"></div>
 
+<div class="img-lightbox" id="imgLightbox" aria-hidden="true">
+  <img id="lightboxImage" src="" alt="Preview">
+</div>
+
 <div class="page">
   <div class="topbar">
     <div class="hud">
@@ -556,8 +600,8 @@ body::after {
       <div class="hero">
         <!-- AVATAR: shows me.jpg if available, falls back to initials -->
         <div class="av">
-          <img src="me.jpg" alt="Turki Fahad" onerror="this.style.display='none'">
-          <span class="av-initials">TF</span>
+          <img id="avatarImage" src="me.jpg" alt="Turki Fahad" onerror="this.style.display='none'">
+          <span class="av-initials"></span>
           <div class="avc tl"></div><div class="avc tr"></div>
           <div class="avc bl"></div><div class="avc br"></div>
         </div>
@@ -927,6 +971,41 @@ function type(){
 }
 type();
 
+/* AVATAR LIGHTBOX */
+const avatarImage = document.getElementById('avatarImage');
+const imgLightbox = document.getElementById('imgLightbox');
+const lightboxImage = document.getElementById('lightboxImage');
+
+if (avatarImage && imgLightbox && lightboxImage) {
+  avatarImage.addEventListener('click', (e) => {
+    if (!avatarImage.getAttribute('src') || avatarImage.style.display === 'none') return;
+    e.stopPropagation();
+    lightboxImage.src = avatarImage.currentSrc || avatarImage.src;
+    lightboxImage.alt = avatarImage.alt || 'Preview';
+    imgLightbox.classList.add('show');
+    imgLightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  });
+
+  imgLightbox.addEventListener('click', (e) => {
+    if (e.target === imgLightbox) {
+      imgLightbox.classList.remove('show');
+      imgLightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
+      document.body.style.overflow = '';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && imgLightbox.classList.contains('show')) {
+      imgLightbox.classList.remove('show');
+      imgLightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
+      document.body.style.overflow = '';
+    }
+  });
+}
+
 /* LANG TOGGLE */
 let isAR=true;
 const rootEl=document.getElementById('root');
@@ -946,7 +1025,6 @@ function applyLang(ar){
 langBtn.addEventListener('click',()=>applyLang(!isAR));
 
 /* PDF */
-document.getElementById('pdfBtn').addEventListener('click',()=>window.print());
 function downloadCV() {
   window.open('cv.pdf', '_blank');
 }
