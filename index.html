@@ -238,6 +238,35 @@ body::after {
 }
 .icur { color: var(--g); animation: blink 1s step-end infinite; }
 
+/* LOGO HEADER */
+.logo-header {
+  display: flex; align-items: center; gap: 12px;
+  max-width: 1280px; margin: 0 auto 12px; padding: 0 20px;
+  position: relative; z-index: 3;
+}
+.logo-img {
+  width: 48px; height: 48px; border-radius: var(--rm);
+  border: 1px solid var(--border2); overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,255,65,.04);
+  flex-shrink: 0;
+}
+.logo-img img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.logo-text {
+  display: flex; flex-direction: column;
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--g);
+  text-shadow: 0 0 10px rgba(0,255,65,.2);
+}
+.logo-main {
+  font-size: 18px; font-weight: 800; letter-spacing: .1em; line-height: 1;
+}
+.logo-sub {
+  font-size: 10px; color: var(--muted); letter-spacing: .08em; margin-top: 2px;
+}
+
 /* PAGE */
 .page { max-width: 1280px; margin: 0 auto; padding: 20px; position: relative; z-index: 3; }
 
@@ -557,7 +586,10 @@ body::after {
 }
 @media (max-width: 768px) {
   .page   { padding: 10px; }
-  .topbar { padding: 10px 14px; }
+  .logo-header { padding: 0 10px; margin-bottom: 10px; }
+  .logo-img { width: 42px; height: 42px; }
+  .logo-main { font-size: 14px; }
+  .logo-sub { font-size: 9px; }
   .shell  { gap: 12px; }
   .hero   { padding: 18px 14px; }
   .sec    { padding: 13px 16px; }
@@ -587,7 +619,10 @@ body::after {
 }
 @media (max-width: 480px) {
   .page  { padding: 8px; }
-  .drow  { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .logo-header { padding: 0 8px; margin-bottom: 8px; gap: 10px; }
+  .logo-img { width: 38px; height: 38px; }
+  .logo-main { font-size: 12px; }
+  .logo-sub { font-size: 8px; }
   .dcard { padding: 11px 9px; }
   .dval  { font-size: 20px; }
   .headline { font-size: 18px; }
@@ -640,6 +675,17 @@ body::after {
 
 <div class="img-lightbox" id="imgLightbox" aria-hidden="true">
   <img id="lightboxImage" src="" alt="Preview">
+</div>
+
+<!-- Logo Header with Profile Image -->
+<div class="logo-header">
+  <div class="logo-img">
+    <img id="logoImage" src="me.jpg" alt="Turki Fahad Almutairi Logo" onerror="this.style.display='none'">
+  </div>
+  <div class="logo-text">
+    <div class="logo-main">TURKI.FAHAD</div>
+    <div class="logo-sub">CYBERSECURITY & DEV</div>
+  </div>
 </div>
 
 <div class="page">
