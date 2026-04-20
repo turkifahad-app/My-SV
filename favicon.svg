@@ -1,0 +1,20 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+  <defs>
+    <linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'>
+      <stop offset='0%' style='stop-color:#00ff41;stop-opacity:1' />
+      <stop offset='100%' style='stop-color:#00cc33;stop-opacity:1' />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect fill='#010b04' width='100' height='100'/>
+  <!-- Outer border with gradient -->
+  <rect fill='url(#grad)' x='8' y='8' width='84' height='84' rx='8'/>
+  <!-- Inner background -->
+  <rect fill='#010b04' x='15' y='15' width='70' height='70' rx='5'/>
+  <!-- Letter T - vertical bar -->
+  <rect fill='#00ff41' x='38' y='25' width='24' height='50' rx='3'/>
+  <!-- Letter T - horizontal bar -->
+  <rect fill='#00ff41' x='28' y='25' width='44' height='8' rx='2'/>
+  <!-- Glow circle -->
+  <circle cx='50' cy='50' r='35' fill='none' stroke='#00ff41' stroke-width='1.5' opacity='0.4'/>
+</svg>
