@@ -24,8 +24,8 @@
 <link rel="canonical" href="https://turki.cc/"/>
 
 <!-- SEO: Favicon - SVG inline for cybersecurity/professional theme (black & green) -->
-<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
-<link rel="apple-touch-icon" href="favicon.svg"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%23010b04' width='64' height='64'/%3E%3Crect fill='%2300ff41' x='16' y='16' width='32' height='32' rx='4'/%3E%3Ccircle fill='%23010b04' cx='32' cy='32' r='14'/%3E%3Cpath fill='%2300ff41' d='M32 24 L36 28 L32 32 L28 28 Z'/%3E%3C/svg%3E"/>
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect fill='%23010b04' width='180' height='180'/%3E%3Crect fill='%2300ff41' x='45' y='45' width='90' height='90' rx='15'/%3E%3Ccircle fill='%23010b04' cx='90' cy='90' r='40'/%3E%3Cpath fill='%2300ff41' d='M90 65 L105 80 L90 95 L75 80 Z'/%3E%3C/svg%3E"/>
 
 <!-- SEO: Open Graph metadata for better social sharing -->
 <meta property="og:type" content="profile"/>
@@ -237,35 +237,6 @@ body::after {
   font-size: 11px; color: var(--muted); letter-spacing: .12em;
 }
 .icur { color: var(--g); animation: blink 1s step-end infinite; }
-
-/* LOGO HEADER */
-.logo-header {
-  display: flex; align-items: center; gap: 12px;
-  max-width: 1280px; margin: 0 auto 12px; padding: 0 20px;
-  position: relative; z-index: 3;
-}
-.logo-img {
-  width: 48px; height: 48px; border-radius: var(--rm);
-  border: 1px solid var(--border2); overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(0,255,65,.04);
-  flex-shrink: 0;
-}
-.logo-img img {
-  width: 100%; height: 100%; object-fit: cover;
-}
-.logo-text {
-  display: flex; flex-direction: column;
-  font-family: 'Share Tech Mono', monospace;
-  color: var(--g);
-  text-shadow: 0 0 10px rgba(0,255,65,.2);
-}
-.logo-main {
-  font-size: 18px; font-weight: 800; letter-spacing: .1em; line-height: 1;
-}
-.logo-sub {
-  font-size: 10px; color: var(--muted); letter-spacing: .08em; margin-top: 2px;
-}
 
 /* PAGE */
 .page { max-width: 1280px; margin: 0 auto; padding: 20px; position: relative; z-index: 3; }
@@ -669,17 +640,6 @@ body::after {
 
 <div class="img-lightbox" id="imgLightbox" aria-hidden="true">
   <img id="lightboxImage" src="" alt="Preview">
-</div>
-
-<!-- Logo Header with Profile Image -->
-<div class="logo-header">
-  <div class="logo-img">
-    <img id="logoImage" src="me.jpg" alt="Turki Fahad Almutairi Logo" onerror="this.style.display='none'">
-  </div>
-  <div class="logo-text">
-    <div class="logo-main">TURKI.FAHAD</div>
-    <div class="logo-sub">CYBERSECURITY & DEV</div>
-  </div>
 </div>
 
 <div class="page">
